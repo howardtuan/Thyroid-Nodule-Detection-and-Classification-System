@@ -62,7 +62,8 @@ python THY_classification.py
 1. 回傳預測類別與信心值，同時顯示：
     * 原始影像
     * YOLO 框選圖
-
+   
+![image](https://github.com/user-attachments/assets/a9504f45-fae7-4acd-88ec-56215a571321)
 ### ✅ 啟動方式
 ```bash!
 pip install -r requirements.txt
