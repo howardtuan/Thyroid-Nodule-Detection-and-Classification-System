@@ -63,7 +63,7 @@ python THY_classification.py
     * 原始影像
     * YOLO 框選圖
    
-![image](https://github.com/user-attachments/assets/a9504f45-fae7-4acd-88ec-56215a571321)
+![image](https://github.com/user-attachments/assets/375bae10-c6a5-47cf-9e5d-9e44c3dc6d55)
 ### ✅ 啟動方式
 ```bash!
 pip install -r requirements.txt
