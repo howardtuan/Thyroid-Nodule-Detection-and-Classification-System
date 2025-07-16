@@ -31,7 +31,8 @@ names: ["Nodule"]
 
 ## 🧪 模型訓練方式
 ### 🔍 YOLOv8 結節偵測
-使用 `Ultralytics YOLO` 套件訓練，預測是否含有結節：
+安裝YOLO `pip install ultralytics`<br>
+使用 `Ultralytics YOLO` 套件`訓練`，預測是否含有結節：
 ```bash!
 yolo detect train model=yolov8n.pt data=data.yaml epochs=100 imgsz=640
 ```
