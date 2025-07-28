@@ -8,8 +8,8 @@
 ## 🔧 功能總覽
 | 功能          | 說明                                   |
 | ----------- | ------------------------------------ |
-| YOLOv8 結節偵測 | 輸入原始影像，輸出是否有結節並框出位置                  |
-| 圖像分類        | 使用 `regnety_004` 模型對結節進行良/惡性分類       |
+| YOLOv11 結節偵測 | 輸入原始影像，輸出是否有結節並框出位置                  |
+| 圖像分類        | 使用 `efficientnet_b0` 模型對結節進行良/惡性分類       |
 | 圖形介面        | 可上傳影像並顯示原圖與 YOLO 框選圖，以及分類結果與信心值      |
 | 訓練腳本        | 提供多模型訓練流程與驗證圖表（ROC、Confusion Matrix） |
 
@@ -35,6 +35,7 @@ names: ["Nodule"]
 使用 `Ultralytics YOLO` 套件`訓練`，預測是否含有結節：
 ```bash!
 yolo detect train model=yolov8n.pt data=data.yaml epochs=100 imgsz=640
+yolo detect train model=yolo11n.pt data=data.yaml epochs=100 imgsz=640
 ```
 ### 🔬 圖像分類（良性 vs 惡性）
 使用 `timm` 套件進行訓練：
@@ -43,10 +44,10 @@ python THY_classification.py
 ```
 支援多模型比較，包括：
 * resnet50
-* efficientnet_b0
+* efficientnet_b0 ✅（本專案最佳表現）
 * vit_base_resnet50d_224
 * swinv2_small_window8_256
-* regnety_004 ✅（本專案最佳表現）
+* regnety_004
 
 訓練結束會自動儲存最佳模型與以下評估：
 * Accuracy
@@ -66,8 +67,14 @@ python THY_classification.py
    
 ![image](https://github.com/user-attachments/assets/375bae10-c6a5-47cf-9e5d-9e44c3dc6d55)
 ### ✅ 啟動方式
+## 建立虛擬環境與安裝套件
 ```bash!
+python -m venv venv
+source venv/bin/activate   # Windows 用 `venv\Scripts\activate`
 pip install -r requirements.txt
+```
+## 啟動伺服器
+```bash!
 python app.py
 ```
 開啟網址：`http://127.0.0.1:5000`
@@ -91,8 +98,8 @@ scikit-learn
 ├── app.py                      # 主網頁後端
 ├── THY_classification.py       # 多模型訓練腳本（良/惡性分類）
 ├── best.pt                     # 訓練好的 YOLO 權重（結節偵測）
-├── regnety_004_best.pth        # 訓練好的分類模型（regnety_004）
-├── data.yaml                   # YOLO 訓練用設定檔（train/val/test 位置與類別）
+├── efficientnet_b0_best.pth    # 訓練好的分類模型（efficientnet_b0）
+├── data_FINAL_AUG.yaml         # YOLO 訓練用設定檔（train/val/test 位置與類別）
 ├── static/
 │   ├── uploads/                # 使用者上傳的圖片
 │   └── results/                # YOLO 預測圖（含框）

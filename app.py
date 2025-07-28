@@ -24,10 +24,10 @@ transform = transforms.Compose([
 ])
 
 # 載入模型
-classification_model_path = r"C:\\temp\\MyGUI\\regnety_004_best.pth"
+classification_model_path = r"C:\Users\howar\OneDrive\桌面\Thyroid-Nodule-Detection-and-Classification-System\efficientnet_b0_best.pth"
 detection_model_path = "best.pt"  # 你訓練好的 YOLO 權重
 
-cls_model = timm.create_model("regnety_004", pretrained=False, num_classes=2)
+cls_model = timm.create_model("efficientnet_b0", pretrained=False, num_classes=2)
 cls_model.load_state_dict(torch.load(classification_model_path, map_location='cpu'))
 cls_model.eval()
 

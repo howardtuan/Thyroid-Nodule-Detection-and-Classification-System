@@ -1,0 +1,6 @@
+train: C:\temp\yolo_FINAL_AUG\images\train
+val: C:\temp\yolo_FINAL_AUG\images\val
+test: C:\temp\yolo_FINAL_AUG\images\test
+
+nc: 1
+names: ["Nodule"]
